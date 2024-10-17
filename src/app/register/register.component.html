@@ -1,0 +1,77 @@
+<div class="login">
+  <div class="container">
+    <div class="logo">
+      <img src="https://placehold.jp/48x48.png">
+    </div>
+    <h1 class="title">Register</h1>
+  </div>
+  <form [formGroup]="registerForm">
+    <div class="input-group">
+        <div class="form-group">
+          <label for="first-name">First Name <span class="red">*</span></label>
+          <input type="text" id="first-name" placeholder="Enter Your First Name" formControlName="firstname" />
+          <div *ngIf="registerForm.get('firstname').invalid && (registerForm.get('firstname').dirty || registerForm.get('firstname').touched)">
+            <small style="color: red;" class="error" *ngIf="registerForm.get('firstname').errors?.['required']">First name is required.</small>
+            <small style="color: red;" class="error" *ngIf="registerForm.get('firstname').errors?.['invalidPattern']">Invalid first name format.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name <span class="red">*</span></label>
+          <input type="text" id="last-name" placeholder="Enter Your Last Name" formControlName="lastname" />
+          <div *ngIf="registerForm.get('lastname').invalid && (registerForm.get('lastname').dirty || registerForm.get('lastname').touched)">
+            <small style="color: red;" class="error" *ngIf="registerForm.get('lastname').errors?.['required']">Last name is required.</small>
+            <small style="color: red;" class="error" *ngIf="registerForm.get('lastname').errors?.['invalidPattern']">Invalid last name format.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group full-width">
+    <label for="email">Email <span class="red">*</span></label>
+    <input type="email" id="email" placeholder="Enter Your Email" formControlName="email" />
+    <div *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+        <small style="color: red;" class="error" *ngIf="registerForm.get('email').errors?.['required']">Email is required.</small>
+        <small style="color: red;" class="error" *ngIf="registerForm.get('email').errors?.['invalidPattern']">Invalid email format.</small>
+      </div>
+
+    <div class="input-group">
+        <div class="form-group">
+          <label for="pass">Password <span class="red">*</span></label>
+          <input type="password" id="pass" placeholder="Enter Your Password" formControlName="pass" />
+          <div *ngIf="registerForm.get('pass').invalid && (registerForm.get('pass').dirty || registerForm.get('pass').touched)">
+            <small style="color: red;" class="error" *ngIf="registerForm.get('pass').errors?.['required']">Password is required.</small>
+            <small style="color: red;" class="error" *ngIf="registerForm.get('pass').errors?.['invalidPattern']">Invalid password format.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="repass">Re-Password <span class="red">*</span></label>
+          <input type="password" id="repass" placeholder="Confirm Your Password" formControlName="repass" />
+          <div *ngIf="registerForm.get('repass').invalid && (registerForm.get('repass').dirty || registerForm.get('repass').touched)">
+            <small style="color: red;" class="error" *ngIf="registerForm.get('repass').errors?.['required']">Password is required.</small>
+            <small style="color: red;" class="error" *ngIf="registerForm.get('repass').errors?.['invalidPattern']">Invalid password format.</small>
+          </div>
+        </div>
+      </div>
+
+    <label for="phone">Phone Number <span class="red">*</span></label>
+    <input type="phone" id="text" placeholder="Enter Your Phone Number" formControlName="phone" />
+    <div *ngIf="registerForm.get('phone').invalid && (registerForm.get('phone').dirty || registerForm.get('phone').touched)">
+        <small style="color: red;" class="error" *ngIf="registerForm.get('phone').errors?.['required']">Phone Number is required.</small>
+        <small style="color: red;" class="error" *ngIf="registerForm.get('phone').errors?.['invalidPattern']">Invalid phone format.</small>
+      </div>
+
+    <label for="role">Your Role <span class="red">*</span></label>
+    <select id="role" formControlName="role" required>
+      <option value="" disabled selected>Select a role</option>
+      <option value="Front-End Developer">Front-End Developer</option>
+      <option value="Back-End Developer">Back-End Developer</option>
+      <option value="Full-Stack Developer">Full-Stack Developer</option>
+      <option value="Mobile App Developer">Mobile App Developer</option>
+    </select>
+    
+    <div class="submit-section">
+      <input class="submit" type="submit" value="Register"/>
+      <p class="account">Already have an acount? <a [routerLink]="['/login']">Login</a></p>
+    </div>
+    </div>
+  </form>
+</div>
